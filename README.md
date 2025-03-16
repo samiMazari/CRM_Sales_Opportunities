@@ -1,94 +1,123 @@
-# CRM_Sales_Opportunities
-B2B sales pipeline data from a fictitious company that sells computer hardware, including information on accounts, products, sales teams, and sales opportunities.
+# CRM Sales Opportunities Analysis
 
-CRM Sales Opportunities Analysis
+## Introduction
 
-Introduction
+Customer Relationship Management (CRM) systems are essential tools for managing interactions with customers and potential clients. This project focuses on analyzing a CRM dataset containing sales opportunities for a fictitious company that sells computer hardware. The objective is to gain insights into the performance of sales teams and agents, and determine which products have the highest success rates in sales deals.
 
-This project aims to analyze a CRM dataset containing sales opportunities for a fictitious company selling computer hardware. The goal is to extract insights on the performance of sales teams, agents, quarterly trends, and the most successful products.
+By leveraging Exploratory Data Analysis (EDA), we aim to uncover key trends that can help improve sales strategies and decision-making.
 
-Data Used
+## Dataset Overview
 
-File Name: CRM_Sales_Opportunities.csv
+**File Name:** `CRM_Sales_Opportunities.csv`
 
-Key Columns:
+**Data Source:** Maven Analytics (Fictitious dataset) [Link to data](https://app.mavenanalytics.io/datasets?search=CRM+Sales+Opportunities)
 
-account: Client identifier
 
-sales_team: Assigned sales team
+**Dataset Description:** The dataset contains sales pipeline data, including accounts, products, sales teams, and sales opportunities.
 
-sales_agent: Responsible agent
+### Key Columns:
 
-product: Product involved
+- **account**: Unique identifier for each client.
+- **sales_team**: The sales team responsible for handling the opportunity.
+- **sales_agent**: The specific agent assigned to the opportunity.
+- **product**: The product associated with the opportunity.
+- **opportunity_date**: Date when the opportunity was created.
+- **closed_date**: Date when the opportunity was closed.
+- **deal_stage**: Status of the opportunity (won, lost, etc.).
 
-opportunity_date: Date of the opportunity
+## Data Preparation and Cleaning
 
-closed_date: Closing date
+To ensure the data is clean and ready for analysis, the following preprocessing steps were performed:
 
-deal_stage: Opportunity status (won, lost, etc.)
+### Data Cleaning
 
-Data Preparation
+#### Handling Missing Values:
+- Removed rows where `closed_date` was missing since they lack closure information.
 
-Cleaning and Transformation
+#### Date Formatting:
+- Converted `opportunity_date` and `closed_date` columns to datetime format to enable time-based analysis.
 
-Removed rows with missing closed_date.
+#### Data Merging:
+- Merged multiple datasets on the `account` column.
+- Eliminated duplicate columns such as `manager_x` and `manager_y` to retain only relevant information.
 
-Converted date columns (opportunity_date, closed_date) to datetime format.
+### Feature Engineering
 
-Created new columns:
+#### Extracted Time-Based Features:
+- Created `year` and `quarter` columns to facilitate quarterly trend analysis.
 
-year and quarter for quarterly trends
+#### Created a Binary Win Column:
+- Added a `win` column where `1` represents a won deal and `0` represents a lost deal.
 
-win (1 if won, 0 otherwise) to facilitate analysis
+## Exploratory Data Analysis (EDA)
 
-Merged multiple datasets on the account column, removing duplicates (manager_x, manager_y).
+EDA was performed to extract meaningful insights from the dataset.
 
-Exploratory Data Analysis (EDA)
+### 1. Sales Team Performance
 
-Sales Team Performance
+- **Metric Analyzed:** Win rate per sales team.
+- **Formula:** `win_rate = wins / total_opportunities`
+- **Visualization:** Bar plot comparing the win rates of different sales teams.
+- **Insight:** Some teams perform significantly better than others, highlighting potential areas for improvement.
 
-Calculated win rate per team (win_rate = wins / total_opportunities).
+### 2. Sales Agent Performance
 
-Visualized using a bar plot.
+- **Metric Analyzed:** Individual agent win rates.
+- **Method:**
+  - Identified the top 5 agents with the highest win rates.
+  - Sorted agents based on their success in closing deals.
+- **Visualization:** Bar plot displaying the performance of top-performing agents.
+- **Insight:** Helps in identifying the best sales agents and those who may require additional training.
 
-Sales Agent Performance
+### 4. Product Performance Analysis
 
-Identified the top 5 agents with the highest win rate.
+- **Metric Analyzed:** Products with the highest number of won deals.
+- **Method:**
+  - Filtered data to include only won deals.
+  - Grouped by product to count the number of successful sales.
+- **Visualization:** Bar plot displaying the top-performing products.
+- **Insight:** Identifies which products have the best sales success rates, helping refine sales strategies.
 
-Displayed results using a bar plot.
+## Key Findings and Business Impact
 
-Quarterly Trends
+### Sales Agent Performance Gaps:
+- **Hayden Neloms** had the highest win rate (0.703947) with 152 oppprtunities, while **Lajuana Vencill** showed weaker performance with 231 oppprtunities and 0.549784 win rate (may need support), indicating the need for targeted training or sales process improvements.
 
-Analyzed the number of opportunities and win rate per quarter.
+### Top Sales Agents:
+- The analysis identified top-performing agents who could be rewarded or used as benchmarks for training lower-performing agents.
 
-Visualized using a line chart.
 
-Product Performance
+### Best-Selling Products:
+- **GTX Basic** had the highest win rate, making it a key product to focus on in marketing and sales strategies.
 
-Identified products with the highest number of won deals.
+### Best-Selling Region:
+- **The central region has the most wins with 1629 win** , making it a key region to focus on in marketing and sales strategies.
 
-Sorted results and displayed using a bar plot.
+### Best-Selling Products:
+- **The retail sector has the most wins with 799 win**, making it a key Sector to focus on in marketing and sales strategies.
 
-Key Findings
+## Technologies Used
 
-Team X has the highest win rate, while Team Y is struggling.
+This project was implemented using the following tools and technologies:
 
-Agent Z is the top performer, with a high win rate.
+### Python Libraries:
+- `pandas` for data manipulation and preprocessing.
+- `matplotlib` and `seaborn` for data visualization.
+- Jupyter Notebook / Google Colab for running analysis.
 
-There is a rise in opportunities in Q2 each year.
+## Repository Structure
 
-Product A has the highest conversion rate in won deals.
+## Future Work (still working on it )
 
-Technologies Used
+### Predictive Modeling:
+- Build a machine learning model to predict the likelihood of winning an opportunity based on historical data.
 
-Python (Pandas, Matplotlib, Seaborn)
+### Sales Strategy Optimization:
+- Identify patterns in lost deals to improve win rates.
 
-Jupyter Notebook / Google Colab for analysis
+### Automated Dashboard:
+- Develop a **Power BI** or **Tableau** dashboard for real-time sales tracking.
 
-Markdown for documentation
+## Conclusion
 
-Files
-
-crm_sales_analysis.ipynb: Notebook containing Python code
-
-crm_sales_report.md: Summary report in Markdown
+This project provided valuable insights into sales team performance, agent success rates, quarterly trends, and product performance. These findings can help businesses optimize their sales strategies, improve agent training, and allocate resources more effectively.
