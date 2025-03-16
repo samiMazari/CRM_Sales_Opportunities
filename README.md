@@ -47,7 +47,7 @@ To ensure the data is clean and ready for analysis, the following preprocessing 
 - Created `year` and `quarter` columns to facilitate quarterly trend analysis.
 
 #### Created a Binary Win Column:
-- Added a `win` column where `1` represents a won deal and `0` represents a lost deal.
+- Added a `Cdeal` column where `1` represents a won deal and `0` represents a lost deal.
 
 ## Exploratory Data Analysis (EDA)
 
